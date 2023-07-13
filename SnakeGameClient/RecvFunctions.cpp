@@ -1,8 +1,5 @@
 #include "stdafx.h"
-#include <winsock2.h>
-#pragma comment(lib, "ws2_32")
-#include "AppProtocol.h"
-#include <string>
+#include "RecvFunctions.h"
 
 void ClearConsole()
 {
@@ -22,7 +19,7 @@ void PopulateMainMenu()
     ClearConsole();
     printf("********** TCP Snake ************\n");
     printf("Please enter menu number.\n");
-    printf("1. Play Game\n 2. Watch Score\n 3. Exit");
+    printf("1. Play Game\n2. Watch Score\n3. Exit\n");
 }
 
 void PopulateModeMenu()
