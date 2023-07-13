@@ -79,29 +79,30 @@ DWORD WINAPI SendThreadFunction(LPVOID pParam)
 {
 	SOCKET hSocket = (SOCKET)pParam;
 	char szBuffer[128] = { 0 }; // buffer size
-	gets_s(szBuffer);
-
-	//g_userConnection = HEALTHY;
-	//g_userDomain = MENU_DOMAIN;
-	//g_inGameStatus = DEAD;
-	//g_snakeDirection;
-
-	switch (g_userDomain)
+	while (1)
 	{
-	case MENU_DOMAIN:
-		// 1. game play, 2. score, 3. exit
-		break;
-	case SCORE_DOMAIN:
-		// 1. 15, 2. 20 3. back to main
-		break;
-	case GAME_DOMAIN:
-		// 1. 15, 2. 20 3. back to main
-		break;
-	case IN_GAME_DOMAIN:
-		// ??
-		break;
-	default:
-		break;
+		gets_s(szBuffer);
+
+		switch (g_userDomain)
+		{
+			case MENU_DOMAIN:
+				// 1. game play, 2. score, 3. exit
+				::send(hSocket, szBuffer, strlen(szBuffer) + 1, 0);
+				break;
+			case SCORE_DOMAIN:
+				// 1. 15, 2. 20 3. back to main
+				::send(hSocket, szBuffer, strlen(szBuffer) + 1, 0);
+				break;
+			case GAME_DOMAIN:
+				// 1. 15, 2. 20 3. back to main
+				::send(hSocket, szBuffer, strlen(szBuffer) + 1, 0);
+				break;
+			case IN_GAME_DOMAIN:
+				// ??
+				break;
+			default:
+				break;
+		}
 	}
 	return 0;
 }
